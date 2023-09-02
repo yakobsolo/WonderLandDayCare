@@ -1,0 +1,44 @@
+<!-- student-dashboard.ejs -->
+<%- include('../layout') %>
+
+<h1>Payment Dashboard</h1>
+<div class="search-bar" style="display: inline; margin-left: 14cm;" >
+  <input type="text" id="searchInput"  placeholder="Search by name...">
+  <button id="searchButton" class="btn btn-primary">Search</button>
+</div>
+<table class="table table-bordered mt-4">
+  <thead class="thead-dark">
+    <tr>
+      <!-- <th>Child ID</th> -->
+      <th>Name</th>
+     <th>Parent Name</th>
+      <th>Invoice</th>
+      <th>Payment</th>
+      <th>View Payment</th>
+     
+    </tr>
+  </thead>
+  <tbody>
+    <% children.forEach((child) => { if (child.status) { %>
+      <tr class="child-row">
+        <!-- <td><%= child._id.toString().slice(-6) %></td> -->
+        <td class="child-name"><%= child.name %></td>
+        <td><%= child.parentName %></td>
+
+        
+        <td>       
+          <a href="/payments/<%= child._id %>/invoice" class="btn btn-warning btn-sm">Invoice</a>
+        </td>
+        <td>
+          <a href="/payments/<%= child._id %>/confirm-payment" class="btn btn-success btn-sm">Confirm Payment</a>
+        </td>
+        <td>
+          <a href="/payments/<%= child._id %>/view-payments" class="btn btn-primary btn-sm">View Payments</a>
+        </td>
+       
+      </tr>
+    <% }}) %>
+  </tbody>
+</table>
+
+<%- include('../partials/footer') %>

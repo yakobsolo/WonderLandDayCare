@@ -1,0 +1,48 @@
+<!-- student-dashboard.ejs -->
+<%- include('../layout') %>
+
+<h1>Addition Dashboard</h1>
+<div class="search-bar" style="display: inline; margin-left: 14cm;" >
+  <input type="text" id="searchInput"  placeholder="Search by name...">
+  <button id="searchButton" class="btn btn-primary">Search</button>
+</div>
+<table class="table table-bordered mt-4">
+  <thead class="thead-dark">
+    <tr>
+      <!-- <th>Child ID</th> -->
+      <th>Name</th>
+     <th>Parent Name</th>
+      <th>Food Consumption</th>
+      <th>Add Service</th>
+      <!-- <th>Add Subscription</th> -->
+      <th>Additional Subscription</th>
+
+         
+    </tr>
+  </thead>
+  <tbody>
+    <% children.forEach((child) => { if (child.status) { %>
+      <tr class="child-row">
+        <!-- <td><%= child._id.toString().slice(-6) %></td> -->
+        <td class="child-name"><%= child.name %></td>
+        <td><%= child.parentName %></td>
+        
+        <td>       
+          <a href="/additions/<%= child._id %>/consume" class="btn btn-warning btn-sm">Consume</a>
+        </td>
+        <td>       
+          <a href="/additions/<%= child._id %>/service" class="btn btn-warning btn-sm">Service</a>
+        </td>
+        <!-- <td>
+          <a href="/additions/<%= child._id %>/subscribe" class="btn btn-warning btn-sm">Subscription</a>
+        </td> -->
+        <td>
+          <a href="/additions/<%= child._id %>/additionalsubscribe" class="btn btn-success btn-sm">Add Subscription</a>
+        </td>
+        
+      </tr>
+    <% }}) %>
+  </tbody>
+</table>
+
+<%- include('../partials/footer') %>

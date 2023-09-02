@@ -1,0 +1,40 @@
+<!-- food-dashboard.ejs -->
+<%- include('../layout') %>
+
+<div class="container mt-4">
+  <h1 class="mb-4">Subscription Dashboard</h1>
+  <a href="/subscriptions/add" class="btn btn-primary">Add Subscription Item</a>
+
+  <table class="table table-bordered mt-4">
+    <thead class="thead-dark">
+      <tr>
+        <th>Subscription Name</th>
+        <th>Price (Birr)</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% subscriptionItems.forEach((subscriptionItem) => { %>
+        <tr>
+          <td><%= subscriptionItem.name %></td>
+          <td><%= subscriptionItem.price %></td>
+
+          <td>
+            <a href="/subscriptions/<%= subscriptionItem._id %>/edit" class="btn btn-warning">Edit</a>
+          </td>
+          <% if (subscriptionItem.name !== 'Monthly-Below' &&  subscriptionItem.name !== 'Monthly-Above' && subscriptionItem.name !== 'Weekly') { %>
+
+          <td>
+            <form action="/subscriptions/<%= subscriptionItem._id %>/delete" method="POST">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </td>
+          <%}%>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('../partials/footer') %>

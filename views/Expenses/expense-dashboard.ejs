@@ -1,0 +1,38 @@
+<!-- food-dashboard.ejs -->
+<%- include('../layout') %>
+
+<div class="container mt-4">
+  <h1 class="mb-4">Expense Dashboard</h1>
+  <a href="/expenses/add" class="btn btn-primary">Add Expense</a>
+
+  <table class="table table-bordered  mt-4">
+    <thead class="thead-dark">
+      <tr>
+        <th>Date</th>
+        <th>Description</th>
+        <th>Amount (Birr)</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% expenseItems.forEach((expenseItem) => { %>
+        <tr>
+          <td><%= expenseItem.expensedate.toDateString()%></td>
+          <td><%= expenseItem.description %></td>
+          <td><%= expenseItem.amount %></td>
+          <td>
+            <a href="/expenses/<%= expenseItem._id %>/edit" class="btn btn-warning">Edit</a>
+          </td>
+          <td>
+            <form action="/expenses/<%= expenseItem._id %>/delete" method="POST">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('../partials/footer') %>

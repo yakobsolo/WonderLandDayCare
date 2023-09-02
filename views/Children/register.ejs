@@ -1,0 +1,197 @@
+<!-- register.ejs -->
+<%- include('../layout') %>
+
+<div class="container mt-4">
+  <h1 class="mb-4">Child Registration</h1>
+  <form action="/children/register" method="POST">
+    <div class="form-row">
+      <div class="col">
+        <label for="name">Child's Name:</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter First Name" required>
+      </div>
+      <div class="col">
+        <label for="parentName">Father's Name:</label>
+
+        <input type="text" class="form-control" id = "parentName" name="parentName" placeholder="Enter Middle Name" required>
+      </div>
+      <div class="col">
+        <label for="grandParentName">GrandFather's Name:</label>
+
+        <input type="text" class="form-control" id = "grandParentName" name="grandParentName" placeholder="Enter Last Name" required>
+      </div>
+    </div>
+  <div class="form-row">
+
+    <div class="col">
+      <label for="age">Age:</label>
+      <input type="number" class="form-control" id="age" name="age" placeholder="Enter Age" required>
+    </div>
+    <div class="col">
+      <label for="month">Month:</label>
+
+      <input type="number" class="form-control" id = "month" name="month" placeholder="Enter Month" required>
+    </div>
+    <div class="col">
+      <label for="sex">Sex: </label>
+
+      <select class="form-control" id="sex" name="sex">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+    </div>
+  </div>
+    <div class="form-row">
+    <div class="col">
+      <label for="subscription">Subscription Type:</label>
+      <select id="subscription" name="subscription" class="form-control">
+        <option value="None">None</option>
+        <% subscriptions.forEach(subscription => {
+          if (subscription.name === 'Monthly-Above' || subscription.name === 'Monthly-Below' || subscription.name === 'Weekly') { %>
+            <option value="<%= subscription.name %>"><%= subscription.name %></option>
+          <% }
+        }); %>
+      </select>
+      </div>
+      <div class="col">
+        <label for="maincontact">Main Contact:</label>
+        <input  type="number" class="form-control" id = "maincontact" name="maincontact" placeholder="Enter Contact" required >
+
+      </div>
+      <div class="col">
+        <label for="weight">Weight(in Kg):</label>
+        <input  type="number" class="form-control" id = "weight" name="weight" placeholder="Enter Weight" required >
+
+      </div>    
+    </div>
+    
+   
+  <div class="form-row">
+    <div class="col">
+      <label for="lastPaidDate">Last Paid Date:</label>
+      <input type="date" id="lastPaidDate" name="lastPaidDate" class="form-control" required>
+    </div>
+    <div class="col">
+      <label for="lastPaidDate">Last Paid Time:</label>
+      <input type="time" id="lastPaidTime" name="lastPaidTime" class="form-control" required>
+    </div>
+    <div class="col">
+      <label for="height">Height(in Cm):</label>
+      <input  type="number" class="form-control" id = "height" name="height" placeholder="Enter Height" required >
+
+    </div>  
+  </div>
+  
+  <h1 class="mb-4">Additional Information</h1>
+<div class="form-row">
+  <div class="col">
+    <label for="fatherFullName">Father's Full Name:</label>
+
+    <input type="text" class="form-control" id = "fatherFullName" name="fatherFullName" placeholder="Enter Full Name" >
+  </div>
+</div>
+<div class="form-row">
+  <div class="col">
+    <label for="faddress">Father's Address:</label>
+    <input type="text" class="form-control" id = "faddress" name="faddress" placeholder="Enter Address" >
+  </div>
+  <div class="col">
+    <label for="fsubcity">Father's Subcity:</label>
+    <input type="text" class="form-control" id = "fsubcity" name="fsubcity" placeholder="Enter Subcity" >
+  </div>
+  <div class="col">
+    <label for="fworeda">Father's Woreda:</label>
+    <input type="text" class="form-control" id = "fworeda" name="fworeda" placeholder="Enter woreda" >
+  </div>
+</div>
+<div class="form-row">
+  <div class="col">
+    <label for="fhouseno">Father's House Number:</label>
+    <input type="text" class="form-control" id = "fhouseno" name="fhouseno" placeholder="Enter House Number" >
+  </div>
+  <div class="col">
+    <label for="fphoneno">Father's Phone Number:</label>
+    <input type="number" class="form-control" id = "fphoneno" name="fphoneno" placeholder="Enter Phone Number" >
+  </div>
+ 
+</div>
+<div class="form-row">
+  <div class="col">
+    <label for="motherFullName">Mothers's Full Name:</label>
+
+    <input type="text" class="form-control" id = "motherFullName" name="motherFullName" placeholder="Enter Full Name" >
+  </div>
+</div>
+<div class="form-row">
+  <div class="col">
+    <label for="maddress">Mothers's Address:</label>
+    <input type="text" class="form-control" id = "maddress" name="maddress" placeholder="Enter Address" >
+  </div>
+  <div class="col">
+    <label for="msubcity">Mothers's Subcity:</label>
+    <input type="text" class="form-control" id = "msubcity" name="msubcity" placeholder="Enter Subcity" >
+  </div>
+  <div class="col">
+    <label for="mworeda">Mothers's Woreda:</label>
+    <input type="text" class="form-control" id = "mworeda" name="mworeda" placeholder="Enter woreda" >
+  </div>
+</div>
+<div class="form-row">
+  <div class="col">
+    <label for="mhouseno">Mothers's House Number:</label>
+    <input type="text" class="form-control" id = "mhouseno" name="mhouseno" placeholder="Enter House Number" >
+  </div>
+  <div class="col">
+    <label for="mphoneno">Mothers's Phone Number:</label>
+    <input type="number" class="form-control" id = "mphoneno" name="mphoneno" placeholder="Enter Phone Number" >
+  </div>
+
+ 
+</div>
+
+<div class="form-row">
+  <div class="col">
+    <label for="thirdPersonFullName">Third Person's Full Name:</label>
+
+    <input type="text" class="form-control" id = "thirdPersonFullName" name="thirdPersonFullName" placeholder="Enter Full Name" >
+  </div>
+</div>
+<div class="form-row">
+  <div class="col">
+    <label for="tpaddress">Third Person's Address:</label>
+    <input type="text" class="form-control" id = "tpaddress" name="tpaddress" placeholder="Enter Address" >
+  </div>
+  <div class="col">
+    <label for="tpsubcity">Third Person's Subcity:</label>
+    <input type="text" class="form-control" id = "tpsubcity" name="tpsubcity" placeholder="Enter Subcity" >
+  </div>
+  <div class="col">
+    <label for="mworeda">Third Person's Woreda:</label>
+    <input type="text" class="form-control" id = "tpworeda" name="tpworeda" placeholder="Enter woreda" >
+  </div>
+</div>
+<div class="form-row">
+  <div class="col">
+    <label for="tphouseno">Third Person's House Number:</label>
+    <input type="text" class="form-control" id = "tphouseno" name="tphouseno" placeholder="Enter House Number" >
+  </div>
+  <div class="col">
+    <label for="tpphoneno">Third Person's Phone Number:</label>
+    <input type="number" class="form-control" id = "tpphoneno" name="tpphoneno" placeholder="Enter Phone Number" >
+  </div>
+</div>
+
+<h1 class="mb-4">Medical Information</h1>
+<div class="form-row">
+  <div class="col">
+  <label for="medicalInformation">Description</label>
+  <input type="text" id="medicalInformation"  class="form-control" name="medicalInformation" placeholder="Enter Description">
+</div>
+</div>
+    <button type="submit" class="btn btn-primary" style=" margin-top: 1cm;">Register Child</button>
+
+
+  </form>
+</div>
+
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,22 @@
+<!-- edit.ejs -->
+<%- include('../layout') %>
+
+<div class="container mt-4">
+  <h1 class="mb-4">Edit Subscription Item</h1>
+  <form action="/subscriptions/<%= subscription._id %>/edit" method="POST">
+    <% if (subscription.name !== 'Monthly-Above' && subscription.name !== 'Monthly-Below' && subscription.name !== 'Weekly') { %>
+
+    <div class="form-group">
+      <label for="name">Subscription Name:</label>
+      <input type="text" id="name" name="name" value="<%= subscription.name %>" class="form-control">
+    </div>
+    <%}%>
+    <div class="form-group">
+      <label for="price">Price (Birr):</label>
+      <input type="number" id="price" name="price" value="<%= subscription.price %>" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>

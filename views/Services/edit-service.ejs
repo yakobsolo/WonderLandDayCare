@@ -1,0 +1,22 @@
+<!-- edit-service.ejs -->
+<%- include('../layout') %>
+
+<div class="container mt-4">
+  <h1 class="mb-4">Edit Additional Service</h1>
+  <form action="/services/<%= service._id %>/edit" method="POST">
+    <% if (service.name !== 'FoodPackage') { %>
+
+    <div class="form-group">
+      <label for="name">Service Name:</label>
+      <input type="text" id="name" name="name" class="form-control" value="<%= service.name %>" required>
+    </div>
+    <% }%>
+    <div class="form-group">
+      <label for="price">Price (Birr):</label>
+      <input type="number" id="price" name="price" class="form-control" value="<%= service.price %>" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Update Service</button>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>

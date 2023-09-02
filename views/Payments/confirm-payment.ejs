@@ -1,0 +1,18 @@
+<!-- views/children/confirm-payment.ejs -->
+<%- include('../layout') %>
+
+<h1>Confirm Payment</h1>
+<div class="container-fluid">
+<form action="/payments/<%= child._id %>/confirm-payment" method="POST">
+  <label for="paymentDate">Payment Date:</label>
+  <input type="date" id="paymentDate" name="paymentDate" required>
+  <input type="time" id="paymentTime" name="paymentTime" required>
+
+  <input type="text" name="amount" id="amount" placeholder="Amount" required>
+  <input type="text" name="paymentDescription" id="paymentDescription" placeholder="Payment Description" required>
+
+
+  <button type="submit" class="btn btn-success">Confirm Payment</button>
+</form>
+</div>
+<%- include('../partials/footer') %>

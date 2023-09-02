@@ -1,0 +1,38 @@
+<!-- views/Reports/paymentDue.ejs -->
+
+<%- include('../layout') %>
+
+
+  <h2>Payment Due Reminders</h2>
+  <div class="search-bar" style="display: inline; margin-left: 14cm;" >
+    <input type="text" id="searchInput"  placeholder="Search by name...">
+    <button id="searchButton" class="btn btn-primary">Search</button>
+  </div>
+  <!-- Payment Due Table -->
+  <table class="table table-bordered mt-4">
+    <thead class="thead-dark">
+      <tr class="child-row">
+        <!-- <th>child id</th> -->
+        <th class="child-name">Child Name</th>
+        <th>Parent Name</th>
+        <th>subscription Type</th>
+
+        <th>Contact</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% dueChildren.forEach(child => { if (child.status) { %>
+        <tr class=" <%= child.overdue ? 'overdue' : 'predue'%> ">
+          <!-- <td><%= child._id.toString().slice(-6) %></td> -->
+          <td><%=  child.name %></td>
+          <td><%= child.parentName %></td>
+          <td><%= child.subscriptionType %></td>
+
+          <td><%= child.maincontact %></td>
+        </tr>
+      <% }}) %>
+    </tbody>
+  </table>
+
+
+<%- include('../partials/footer') %>

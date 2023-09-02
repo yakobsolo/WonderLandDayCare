@@ -1,0 +1,48 @@
+.in-process {
+    background-color: rgb(255, 255, 255); 
+  }
+  
+  .not-active {
+    background-color: rgb(255, 172, 172);
+  }
+  
+  .predue {
+    background-color: rgb(248, 250, 192); 
+  }
+  
+  .overdue {
+    background-color: rgb(192, 255, 176); 
+  }
+  
+  .container-with-text {
+    display: flex; 
+     
+  }
+  
+  .red-container {
+
+    width: 60px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    background-color: rgb(255, 172, 172); /* Replace with your desired background color */
+    /* Additional styling properties like border, padding, margin, etc. */
+  }
+  
+  .inline-text {
+    margin-left: 20px; /* Adjust the margin as needed to add space between the container and text */
+    /* Additional styling properties for your text */
+  }
+
+  .yellow-container {
+
+    width: 90px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    background-color: rgb(248, 250, 192); /* Replace with your desired background color */
+    /* Additional styling properties like border, padding, margin, etc. */
+  }
+  .green-container {
+
+    width: 60px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    background-color: rgb(192, 255, 176); /* Replace with your desired background color */
+    /* Additional styling properties like border, padding, margin, etc. */
+  }

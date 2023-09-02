@@ -1,0 +1,81 @@
+<!-- student-dashboard.ejs -->
+<%- include('../layout') %>
+<!-- Add this script to your HTML -->
+
+
+<h1>Child Dashboard</h1>
+<a href="/children/register" class="btn btn-primary btn-sm">Register</a>
+
+<div class="search-bar" style="display: inline; margin-left: 12cm;" >
+  <input type="text" id="searchInput"  placeholder="Search by name...">
+  <button id="searchButton" class="btn btn-primary">Search</button>
+</div>
+
+<table class="table table-bordered mt-4">
+  <thead class="thead-dark">
+    <tr>
+      <!-- <th>Child ID</th> -->
+      <th>Name</th>
+      <th>Parent Name</th>
+      <th>Details</th>
+      <th>Edit</th>
+      <th>Delete</th>
+      <th>Change Status</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <% children.forEach((child) => { %>
+      <tr  class="child-row child-box <%= child.status ? 'in-process' : 'not-active' %>">
+        
+        <!-- <td ><%= child._id.toString().slice(-6) %></td> -->
+        <td class="child-name"><%= child.name %></td>
+        <td><%= child.parentName %></td>
+        
+        <td>
+          <a href="/children/<%= child._id %>/details" class="btn btn-primary btn-sm">Details</a>
+
+        </td>
+        <td>
+          <a href="/children/<%= child._id %>/edit" class="btn btn-success btn-sm">Edit</a>
+        </td>
+
+        <td>
+          <form action="/children/<%= child._id %>/delete" method="POST" style="display: inline;">
+            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+          </form>
+        </td>
+        
+        <td>
+          <form action="/children/<%= child._id %>/status" method="POST" style="display: inline;">
+            <button type="submit" class="btn   <%= child.status ? 'btn-primary' : 'btn-danger' %> btn-sm">Switch Status</button>
+          </form>
+          </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</table>
+<script>
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const searchButton = document.getElementById("searchButton");
+    const searchInput = document.getElementById("searchInput");
+    const childRows = document.querySelectorAll(".child-row");
+
+    searchButton.addEventListener("click",  () => {
+      const searchTerm = searchInput.value.trim().toLowerCase();
+      console.log("HI");
+        childRows.forEach(row => {
+        const childName = row.querySelector(".child-name").textContent.toLowerCase();
+        // const childContact = row.querySelector(".child-contact").textContent.toLowerCase();
+        if (childName.includes(searchTerm) ) {
+          row.style.display = "table-row";
+        } else {
+          row.style.display = "none";
+        }
+      });
+    });
+  });
+</script>
+
+<%- include('../partials/footer') %>

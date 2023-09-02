@@ -1,0 +1,89 @@
+<!-- invoices.ejs -->
+<%- include('../layout') %>
+
+<h1>Invoice for Child ID: <%= child._id %></h1>
+
+<h2>Food Consumption:</h2>
+<table class="table table-bordered mt-4">
+  <thead class="thead-dark">
+  <tr>
+    <th>Date</th>
+    <th>Meal</th>
+    <th>Price</th>
+  </tr>
+</thead>
+<tbody>
+  <% filteredConsumedFood.forEach((consumption) => { %>
+    <tr>
+      <td><%= consumption.date.toDateString() %></td>
+      <td><%= consumption.meal %></td>
+      <td><%= consumption.price %> Birr</td>
+    </tr>
+  <% }) %>
+</tbody>
+</table>
+
+<h2>Additional Services:</h2>
+<table class="table table-bordered mt-4">
+  <thead class="thead-dark" >
+  <tr>
+    <th>Date</th>
+    <th>Service</th>
+    <th>Price</th>
+  </tr>
+</thead>
+<tbody>
+  <% filteredAdditionalService.forEach((serv) => { %>
+    <tr>
+      <td><%= serv.date.toDateString() %></td>
+      <td><%= serv.service %></td>
+      <td><%= serv.price %> Birr</td>
+    </tr>
+  <% }) %>
+</tbody>
+</table>
+
+<h2>Additional Subscription:</h2>
+
+
+<table class="table table-bordered mt-4">
+  <thead class="thead-dark">
+  <tr>
+    <th>Date</th>
+    <th>Subscription</th>
+    <th>Price</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% filteredSubscriptionType.forEach((subs) => { %>
+    <tr>
+      <td><%= subs.date.toDateString() %></td>
+      <td><%= subs.subscription %></td>
+      <td><%= subs.price %> Birr</td>
+    </tr>
+  <% }) %>
+</tbody>
+</table>
+
+<h2>Main Subscription:</h2>
+<table class="table table-bordered mt-4">
+  <thead class="thead-dark">
+  <tr>
+    <th>Date</th>
+    <th>Subscription</th>
+    <th>Price</th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td><%= child.lastPaidDate.toDateString() %></td>
+    <td><%= child.subscriptionType %></td>
+    <td><%= cost %></td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h2>Total Amount: <%= totalAmount %> Birr</h2>
+
+<%- include('../partials/footer') %>

@@ -1,0 +1,31 @@
+<!-- food-tracker.ejs -->
+<%- include('../layout') %>
+
+<div class="container mt-4">
+  <h1 class="mb-4">Additional Subscription Tracker for Child ID: <%= childId %></h1>
+  <form action="/additions/<%= childId %>/additionalsubscribe" method="POST" class="mb-4">
+    <div class="form-group">
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="time">Time:</label>
+      <input type="time" id="time" name="time" class="form-control" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="subscription">Subscription Type:</label>
+      <select id="subscription" name="subscription" class="form-control">
+        <% subscriptions.forEach(subscription => {
+          if (subscription.name !== 'Monthly' && subscription.name !== 'Weekly') { %>
+            <option value="<%= subscription.name %>"><%= subscription.name %></option>
+          <% }
+        }); %>
+      </select>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>

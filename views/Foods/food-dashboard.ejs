@@ -1,0 +1,36 @@
+<!-- food-dashboard.ejs -->
+<%- include('../layout') %>
+
+<div class="container mt-4">
+  <h1 class="mb-4">Food Dashboard</h1>
+  <a href="/foods/add" class="btn btn-primary">Add Food Item</a>
+
+  <table class="table table-bordered mt-4">
+    <thead class="thead-dark">
+      <tr>
+        <th>Food Name</th>
+        <th>Price (Birr)</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% foodItems.forEach((foodItem) => { %>
+        <tr>
+          <td><%= foodItem.name %></td>
+          <td><%= foodItem.price %></td>
+          <td>
+            <a href="/foods/<%= foodItem._id %>/edit" class="btn btn-warning">Edit</a>
+          </td>
+          <td>
+            <form action="/foods/<%= foodItem._id %>/delete" method="POST">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('../partials/footer') %>

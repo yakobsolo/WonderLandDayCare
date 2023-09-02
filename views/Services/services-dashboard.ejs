@@ -1,0 +1,41 @@
+<!-- services-dashboard.ejs -->
+<%- include('../layout') %>
+
+<div class="container mt-4">
+  <h1 class="mb-4">Additional Services Dashboard</h1>
+  <a href="/services/add" class="btn btn-primary">Add Service</a>
+
+  <table class="table mt-4">
+    <thead class="thead-dark">
+      <tr>
+        <th>Service Name</th>
+        <th>Price (Birr)</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% services.forEach((service) => { %>
+        <tr>
+          <td><%= service.name %></td>
+          <td><%= service.price %></td>
+
+          <td>
+            <a href="/services/<%= service._id %>/edit" class="btn btn-warning">Edit</a>
+          </td>
+          <% if (service.name !== 'FoodPackage') { %>
+
+          <td>
+            
+            <form action="/services/<%= service._id %>/delete" method="POST">
+              <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
+          </td>
+          <%}%>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>
+
+<%- include('../partials/footer') %>

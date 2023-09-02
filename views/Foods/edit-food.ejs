@@ -1,0 +1,19 @@
+<!-- edit.ejs -->
+<%- include('../layout') %>
+
+<div class="container mt-4">
+  <h1 class="mb-4">Edit Food Item</h1>
+  <form action="/foods/<%= food._id %>/edit" method="POST">
+    <div class="form-group">
+      <label for="name">Food Name:</label>
+      <input type="text" id="name" name="name" value="<%= food.name %>" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="price">Price (Birr):</label>
+      <input type="number" id="price" name="price" value="<%= food.price %>" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>

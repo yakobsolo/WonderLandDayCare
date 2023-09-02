@@ -1,0 +1,26 @@
+<%- include('../layout') %>
+
+<h1>Report</h1>
+
+<table class="table table-bordered mt-4">
+    <thead class="thead-dark">
+        <tr>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Revenue</th>
+            <th>Expenses</th>
+            <th>NetProfit</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><%= startDate.toDateString() %></td>
+            <td><%= endDate.toDateString() %></td>
+            <td><%= childTotal %></td>
+            <td> <%= expenseTotal %></td>
+            <td><%= netProfit %></td>
+        </tr>
+    </tbody>
+</table>
+
+<%- include('../partials/footer') %>

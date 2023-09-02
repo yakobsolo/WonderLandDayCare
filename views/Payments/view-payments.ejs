@@ -1,0 +1,28 @@
+<!-- views/Reports/view-payments.ejs -->
+
+<%- include('../layout') %>
+
+<div class="container mt-5">
+  <h2>Payments</h2>
+  
+  <!-- Payments -->
+  <table class="table table-bordered mt-4">
+    <thead class="thead-dark">
+      <tr>
+        <th> Payment Date </th>
+        <th> Payment Description </th>
+        <th> Payment Amount </th>
+    </tr>
+    </thead>
+    <tbody>
+      <% child.payments.forEach(payment => {  %>
+        <tr>
+          <td><%= payment.paymentDate.toDateString() %></td>
+          <td><%=  payment.paymentDescription %></td>
+          <td><%= payment.amount %></td>
+          
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

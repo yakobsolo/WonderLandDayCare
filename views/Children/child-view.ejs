@@ -1,0 +1,156 @@
+<!-- child-view.ejs -->
+<%- include('../layout') %>
+
+<h1>Details</h1>
+<table class="table table-bordered mt-4">
+  <thead class="thead-dark">
+    <tr>
+      <th>Id</th>
+      <th>Name</th>
+      <th>MiddleName</th>
+      <th>LastName</th>
+      <th>Age</th>
+      <th>Month</th>
+      <th>Sex</th>
+      <th>Subscription</th>
+      <th>MainContact</th>
+      <th>Weight</th>
+      <th>Height</th>
+      <th>LastPaidDate</th>
+      <th>Father'sFullName</th>
+      <th>Father'sAddress</th>
+      <th>Father'sSubcity</th>
+      <th>Father'sWoreda</th>
+      <th>Father'sHouseNo</th>
+      <th>Father'sPhoneNo</th>
+      <th>Mother'sFullName</th>
+      <th>Mother'sAddress</th>
+      <th>Mother'sSubcity</th>
+      <th>Mother'sWoreda</th>
+      <th>Mother'sHouseNo</th>
+      <th>Mother'sPhoneNo</th>
+      <th>ThirdPerson'sFullName</th>
+      <th>ThirdPerson'sAddress</th>
+      <th>ThirdPerson'sSubcity</th>
+      <th>ThirdPerson'sWoreda</th>
+      <th>ThirdPerson'sHouseNo</th>
+      <th>ThirdPerson'sPhoneNo</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+        
+        <td><%= child._id.toString().slice(-6) %></td>
+        <td><%= child.name %></td>
+        <td><%= child.parentName %></td>
+        <td><%= child.grandParentName%></td>
+        <td><%= child.age %></td>
+        <td><%= child.month %></td>
+        <td><%= child.sex %></td>
+        <td><%= child.subscriptionType %></td>
+        <td><%= child.maincontact %></td>
+        <td><%= child.weight %></td>
+        <td><%= child.height %></td>
+        <td><%= child.lastPaidDate.toDateString() %></td>
+        <td><%= child.fatherFullName %></td>
+        <td><%= child.faddress %></td>
+        <td><%= child.fsubcity %></td>
+        <td><%= child.fworeda %></td>
+        <td><%= child.fhouseno %></td>
+        <td><%= child.fphoneno %></td>
+        <td><%= child.motherFullName %></td>
+        <td><%= child.maddress %></td>
+        <td><%= child.msubcity %></td>
+        <td><%= child.mworeda %></td>
+        <td><%= child.mhouseno %></td>
+        <td><%= child.mphoneno %></td>
+        <td><%= child.thirdPersonFullName %></td>
+        <td><%= child.tpaddress %></td>
+        <td><%= child.tpsubcity %></td>
+        <td><%= child.tpworeda %></td>
+        <td><%= child.tphouseno %></td>
+        <td><%= child.tpphoneno %></td>
+        
+
+        
+
+        
+    </tr>
+  </tbody>
+</table>
+<h1>Medical Information</h1>
+<table class="table table-bordered mt-4">
+  <thead class="thead-dark">
+    <tr>
+      <th>Description</th>
+    </tr>
+    </thead>
+    <tr>
+      <td><%=child.medicalInformation%></td>  
+    </tr>
+    <tbody>
+
+    </tbody>
+  </table>
+<h1>Added Food</h1>
+<table class="table table-bordered mt-4">
+  <thead class="thead-dark">
+    <tr>
+      <th>Date</th>
+      <th>Food Name</th>
+    </tr>
+    </thead>
+    <% child.consumedFood.forEach((food) => { %>
+    <tr>
+      <td><%=food.date.toDateString()%></td>
+      <td><%= food.meal%></td>
+
+      
+    </tr>
+    <% })%>
+    <tbody>
+
+    </tbody>
+  </table>
+<h1>Added Subscription</h1>
+<table class="table table-bordered mt-4">
+  <thead class="thead-dark">
+    <tr>
+      <th>Date</th>
+      <th>Subscription Name</th>
+    </tr>
+    </thead>
+    <% child.additionalSubscription.forEach((sub) => { %>
+    <tr>
+      <td><%=sub.date.toDateString()%></td>
+      <td><%= sub.subscription%></td>
+
+      
+    </tr>
+    <% })%>
+    <tbody>
+
+    </tbody>
+  </table>
+<h1>Added Services</h1>
+<table class="table table-bordered mt-4">
+  <thead class="thead-dark">
+    <tr>
+      <th>Date</th>
+      <th>Service Name</th>
+    </tr>
+    </thead>
+    <% child.additionalService.forEach((serv) => { %>
+    <tr>
+      <td><%=serv.date.toDateString()%></td>
+      <td><%= serv.service%></td>
+     
+    </tr>
+    <% })%>
+    <tbody>
+  </tbody>
+  </table>
+
+
+<%- include('../partials/footer') %>

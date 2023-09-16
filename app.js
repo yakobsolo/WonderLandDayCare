@@ -10,8 +10,10 @@ const additionRouter = require('./routes/addition');
 const paymentRouter = require('./routes/payment');
 const expenseRouter = require('./routes/expense');
 const reportRouter = require('./routes/report');
+const loginRouter = require('./routes/login');
 
-
+const db_password = "jaxNWXbfMFYhZJWQ";
+const dbUrl = "mongodb+srv://wonderland:jaxNWXbfMFYhZJWQ@cluster0.u2ctjw1.mongodb.net/?retryWrites=true&w=majority"
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -26,7 +28,8 @@ app.set('view engine', 'ejs');
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Connect to MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/daycare', {
+// mongodb://127.0.0.1:27017/daycare
+mongoose.connect(dbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -56,7 +59,7 @@ app.use('/payments', paymentRouter);
 app.use('/expenses', expenseRouter);
 app.use('/reports', reportRouter);
 
-
+app.use('/login', loginRouter);
 
 
 app.get('/', (req, res) => {
